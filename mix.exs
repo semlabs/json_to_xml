@@ -7,7 +7,15 @@ defmodule JsonToXml.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+
+     # Docs
+     name: "JsonToXml",
+     source_url: "https://github.com/semlabs/json_to_xml",
+     homepage_url: "https://github.com/semlabs/json_to_xml",
+     docs: [main: "JsonToXml", # The main page in the docs
+            extras: ["README.md"]]
+    ]
   end
 
   # Configuration for the OTP application
@@ -29,6 +37,8 @@ defmodule JsonToXml.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:poison, "~> 3.0"},
-     {:xml_builder, "~>0.1.1"}]
+     {:ex_doc, "~> 0.14", only: :dev, runtime: false}, 
+     {:xml_builder, "~>0.1.1"}
+    ]
   end
 end
