@@ -13,9 +13,7 @@ defmodule JsonToXml.Mixfile do
        licenses: ["MIT"],
        links: %{github: "https://github.com/semlabs/json_to_xml"}
      ],
-     description: """
-     JSON to XML converter for Elixir
-     """
+     description: "JSON to XML converter for Elixir",
 
      # Docs
      name: "JsonToXml",
