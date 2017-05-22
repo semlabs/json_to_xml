@@ -1,6 +1,7 @@
 # JsonToXml
+[![Build Status](https://semaphoreci.com/api/v1/semlabs/json_to_xml/branches/master/shields_badge.svg)](https://semaphoreci.com/semlabs/json_to_xml)
 
-**TODO: Add description**
+Convert JSON strings to XML.
 
 ## Installation
 
