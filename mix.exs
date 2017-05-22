@@ -8,6 +8,14 @@ defmodule JsonToXml.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(),
+     package: [
+       maintainers: ["Marian Bäuerle"],
+       licenses: ["MIT"],
+       links: %{github: "https://github.com/semlabs/json_to_xml"}
+     ],
+     description: """
+     JSON to XML converter for Elixir
+     """
 
      # Docs
      name: "JsonToXml",
