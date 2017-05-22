@@ -4,5 +4,12 @@
         "street": "Huffman Road",
         "number": "12"
     }, 
-    "array": ["apple", "banana", "lemon"]
+    "array": [
+        "first", 
+        {
+            "content": "sweet",
+            "peel": "indigestive"    
+        }, 
+        "lemon"
+    ]
 }

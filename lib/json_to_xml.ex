@@ -53,7 +53,7 @@ defmodule JsonToXml do
   ## Examples
   
       iex>JsonToXml.convert_file("test/fixtures/example.json")
-      "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<address>\\n\\t\\t<number>12</number>\\n\\t\\t<street>Huffman Road</street>\\n\\t</address>\\n\\t<array>\\n\\t\\t<element>apple</element>\\n\\t\\t<element>banana</element>\\n\\t\\t<element>lemon</element>\\n\\t</array>\\n\\t<name>John Doe</name>\\n</root>"
+      "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<address>\\n\\t\\t<number>12</number>\\n\\t\\t<street>Huffman Road</street>\\n\\t</address>\\n\\t<array>\\n\\t\\t<element>first</element>\\n\\t\\t<element>\\n\\t\\t\\t<content>sweet</content>\\n\\t\\t\\t<peel>indigestive</peel>\\n\\t\\t</element>\\n\\t\\t<element>lemon</element>\\n\\t</array>\\n\\t<name>John Doe</name>\\n</root>"
   """
   def convert_file(file) do
     File.read!(file)
@@ -80,6 +80,6 @@ defmodule JsonToXml do
   end
 
   defp create_array_item(element, acc) do
-   [element("element", element) | acc]
+   [create_element({"element", element}) | acc]
   end
 end
