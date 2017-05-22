@@ -7,6 +7,18 @@ defmodule JsonToXml do
 
   @doc """
   Converts the given json string into a xml string.
+  The document root is added with the tag `<root>`. 
+  Elements in arrays are wrapped in `<element>` tags like so:
+  ```
+    "list": ["apple", "banana"]
+    
+    <root>
+       <list>
+          <element>apple</element> 
+          <element>banana</element>
+       </list>
+    </root> 
+  ```
 
   ## Examples
   iex>JsonToXml.convert(~s({ "firstname": "john", "lastname": "doe" }))
