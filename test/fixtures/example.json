@@ -1,7 +1,8 @@
 {
-    "file": "/usr/tmp/test.xml",
-    "attributes": "read",
-    "object": {
-        "type": "string"
-    }
+    "name": "John Doe",
+    "address": {
+        "street": "Huffman Road",
+        "number": "12"
+    }, 
+    "array": ["apple", "banana", "lemon"]
 }
