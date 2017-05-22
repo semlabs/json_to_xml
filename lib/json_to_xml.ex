@@ -33,10 +33,10 @@ defmodule JsonToXml do
   Converts the given json file into a xml string. 
   
   ## Examples
-  iex>JsonToXml.convertFile("test/fixtures/example.json")
+  iex>JsonToXml.convert_file("test/fixtures/example.json")
   "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<root>\n\t<address>\n\t\t<number>12</number>\n\t\t<street>Huffman Road</street>\n\t</address>\n\t<array>\n\t\t<element>apple</element>\n\t\t<element>banana</element>\n\t\t<element>lemon</element>\n\t</array>\n\t<name>John Doe</name>\n</root>"
   """
-  def convertFile(file) do
+  def convert_file(file) do
     File.read!(file)
     |> convert()
   end
