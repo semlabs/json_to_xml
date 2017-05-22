@@ -8,18 +8,36 @@ defmodule JsonToXml do
   @doc """
   Converts the given json string into a xml string.
 
+  The document root is added with the tag `<root>`. 
+  Elements in arrays are wrapped in `<element>` tags like so:
+  ``` json
+  {
+      "list": ["apple", "banana"]
+  }
+  ```
+  is converted to  
+  ``` xml
+  <root>
+     <list>
+        <element>apple</element> 
+        <element>banana</element>
+     </list>
+  </root> 
+  ```
+
   ## Examples
-  iex>JsonToXml.convert(~s({ "firstname": "john", "lastname": "doe" }))
-  "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<root>\n\t<firstname>john</firstname>\n\t<lastname>doe</lastname>\n</root>"
+  
+      iex>JsonToXml.convert(~s({ "firstname": "john", "lastname": "doe" }))
+      "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<firstname>john</firstname>\\n\\t<lastname>doe</lastname>\\n</root>"
 
-  iex>JsonToXml.convert(~s({ "name": { "first": "john", "last": "doe" } }))
-  "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<root>\n\t<name>\n\t\t<first>john</first>\n\t\t<last>doe</last>\n\t</name>\n</root>"
+      iex>JsonToXml.convert(~s({ "name": { "first": "john", "last": "doe" } }))
+      "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<name>\\n\\t\\t<first>john</first>\\n\\t\\t<last>doe</last>\\n\\t</name>\\n</root>"
 
-  iex>JsonToXml.convert(~s({ "person": { "name": "doe", "address": { "street": "Huffman Road", "number": "12"}} }))
-  "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<root>\n\t<person>\n\t\t<address>\n\t\t\t<number>12</number>\n\t\t\t<street>Huffman Road</street>\n\t\t</address>\n\t\t<name>doe</name>\n\t</person>\n</root>"
+      iex>JsonToXml.convert(~s({ "person": { "name": "doe", "address": { "street": "Huffman Road", "number": "12"}} }))
+      "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<person>\\n\\t\\t<address>\\n\\t\\t\\t<number>12</number>\\n\\t\\t\\t<street>Huffman Road</street>\\n\\t\\t</address>\\n\\t\\t<name>doe</name>\\n\\t</person>\\n</root>"
 
-  iex>JsonToXml.convert(~s({ "list": ["apple", "banana", "lemon"] }))
-  "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<root>\n\t<list>\n\t\t<element>apple</element>\n\t\t<element>banana</element>\n\t\t<element>lemon</element>\n\t</list>\n</root>"
+      iex>JsonToXml.convert(~s({ "list": ["apple", "banana", "lemon"] }))
+      "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<list>\\n\\t\\t<element>apple</element>\\n\\t\\t<element>banana</element>\\n\\t\\t<element>lemon</element>\\n\\t</list>\\n</root>"
   """
   def convert(json) do
     content =
@@ -33,10 +51,11 @@ defmodule JsonToXml do
   Converts the given json file into a xml string. 
   
   ## Examples
-  iex>JsonToXml.convertFile("test/fixtures/example.json")
-  "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<root>\n\t<address>\n\t\t<number>12</number>\n\t\t<street>Huffman Road</street>\n\t</address>\n\t<array>\n\t\t<element>apple</element>\n\t\t<element>banana</element>\n\t\t<element>lemon</element>\n\t</array>\n\t<name>John Doe</name>\n</root>"
+  
+      iex>JsonToXml.convert_file("test/fixtures/example.json")
+      "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<address>\\n\\t\\t<number>12</number>\\n\\t\\t<street>Huffman Road</street>\\n\\t</address>\\n\\t<array>\\n\\t\\t<element>apple</element>\\n\\t\\t<element>banana</element>\\n\\t\\t<element>lemon</element>\\n\\t</array>\\n\\t<name>John Doe</name>\\n</root>"
   """
-  def convertFile(file) do
+  def convert_file(file) do
     File.read!(file)
     |> convert()
   end
