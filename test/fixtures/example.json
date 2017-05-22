@@ -1,0 +1,7 @@
+{
+    "file": "/usr/tmp/test.xml",
+    "attributes": "read",
+    "object": {
+        "type": "string"
+    }
+}
