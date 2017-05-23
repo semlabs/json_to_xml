@@ -12,7 +12,7 @@ by adding `json_to_xml` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:json_to_xml, "~> 0.1.0"}]
+  [{:json_to_xml, "~> 0.2.1"}]
 end
 ```
 
@@ -29,7 +29,24 @@ To convert files use `convertFile`:
 JsonToXml.convertFile("/path/to/file")
 ```
 
+Note that 
+
 ## Documentation
 
 The docs can be found at [https://hexdocs.pm/json_to_xml](https://hexdocs.pm/json_to_xml).
 
+## Known issues
+
+- JSON with empty keys is not supported and leads to an empty XML tag:
+JSON:
+```json
+{
+    "": "content
+}
+```
+XML:
+```xml
+<root>
+    <>content</>
+</root>
+```
