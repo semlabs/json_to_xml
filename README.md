@@ -16,6 +16,19 @@ def deps do
 end
 ```
 
+## Usage
+
+After adding the dependency you can use the converter like this:
+```elixir
+JsonToXml.convert(~s({ "name": "John" }))
+#=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<name>John</name>\n</root>"
+```
+
+To convert files use `convertFile`:
+```elixir
+JsonToXml.convertFile("/path/to/file")
+```
+
 ## Documentation
 
 The docs can be found at [https://hexdocs.pm/json_to_xml](https://hexdocs.pm/json_to_xml).
