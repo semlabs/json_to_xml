@@ -12,7 +12,7 @@ by adding `json_to_xml` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:json_to_xml, "~> 0.1.0"}]
+  [{:json_to_xml, "~> 0.2.1"}]
 end
 ```
 
