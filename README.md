@@ -10,7 +10,7 @@ The package can be installed by adding `json_to_xml` to your list of dependencie
 
 ```elixir
 def deps do
-  [{:json_to_xml, "~> 0.2.1"}]
+  [{:json_to_xml, "~> 0.3.0"}]
 end
 ```
 
@@ -18,13 +18,13 @@ end
 
 After adding the dependency you can use the converter like this:
 ```elixir
-JsonToXml.convert(~s({ "name": "John" }))
+JsonToXml.convert!(~s({ "name": "John" }))
 #=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n\t<name>John</name>\n</root>"
 ```
 
 To convert files use `convertFile`:
 ```elixir
-JsonToXml.convertFile("/path/to/file")
+JsonToXml.convertFile!("/path/to/file")
 ```
 
 ## Documentation
