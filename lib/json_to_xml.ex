@@ -87,12 +87,18 @@ defmodule JsonToXml do
       {:error, {:invalid, 14}}
   """
   def convert(json) do
-    case Poison.decode(json) do
-      {:ok, decoded} -> 
-        content = map_elements(decoded) 
-        {:ok, XmlBuilder.doc("root", content)}
-      {:error, reason, line} -> {:error, {reason, line}}
-    end
+    json
+    |> Poison.decode()
+    |> do_convert()
+  end
+
+  defp do_convert({:ok, decoded}) do
+    content = map_elements(decoded) 
+    {:ok, XmlBuilder.doc("root", content)}
+  end
+
+  defp do_convert({:error, reason, line}) do
+    {:error, {reason, line}}
   end
 
   @doc """
