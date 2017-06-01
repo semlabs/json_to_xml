@@ -6,9 +6,7 @@
 Convert JSON strings to XML.
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `json_to_xml` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `json_to_xml` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -28,8 +26,6 @@ To convert files use `convertFile`:
 ```elixir
 JsonToXml.convertFile("/path/to/file")
 ```
-
-Note that 
 
 ## Documentation
 
