@@ -84,7 +84,10 @@ defmodule JsonToXml do
       {:ok, "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n\\t<list>\\n\\t\\t<element>apple</element>\\n\\t\\t<element>banana</element>\\n\\t\\t<element>lemon</element>\\n\\t</list>\\n</root>"}
 
       iex>JsonToXml.convert(~s( { "bogus": 1 ))
-      {:error, {:invalid, 14}}
+      {:error, {:invalid, nil, 14}}
+
+      iex>JsonToXml.convert(~s("bogus"; 1))
+      {:error, {:invalid, ";", 7}}
   """
   def convert(json) do
     json
@@ -98,7 +101,11 @@ defmodule JsonToXml do
   end
 
   defp do_convert({:error, reason, line}) do
-    {:error, {reason, line}}
+    {:error, {reason, nil, line}}
+  end
+
+  defp do_convert({:error, {reason, symbol, line}}) do
+    {:error, {reason, symbol, line}}
   end
 
   @doc """

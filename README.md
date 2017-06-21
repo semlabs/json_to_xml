@@ -10,7 +10,7 @@ The package can be installed by adding `json_to_xml` to your list of dependencie
 
 ```elixir
 def deps do
-  [{:json_to_xml, "~> 0.3.0"}]
+  [{:json_to_xml, "~> 0.4.0"}]
 end
 ```
 
