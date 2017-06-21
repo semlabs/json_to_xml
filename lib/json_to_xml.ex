@@ -85,6 +85,9 @@ defmodule JsonToXml do
 
       iex>JsonToXml.convert(~s( { "bogus": 1 ))
       {:error, {:invalid, 14}}
+
+      iex>JsonToXml.convert(~s("bogus"; 1))
+      {:error, {:invalid, ";", 7}}
   """
   def convert(json) do
     json
@@ -98,7 +101,11 @@ defmodule JsonToXml do
   end
 
   defp do_convert({:error, reason, line}) do
-    {:error, {reason, line}}
+    {:error, {reason, nil, line}}
+  end
+
+  defp do_convert({:error, {reason, symbol, line}}) do
+    {:error, {reason, symbol, line}}
   end
 
   @doc """
