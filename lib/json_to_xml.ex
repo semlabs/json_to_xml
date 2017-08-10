@@ -108,6 +108,16 @@ defmodule JsonToXml do
     {:error, {reason, symbol, line}}
   end
 
+  # Support Poison 2.2
+  defp do_convert({:error, :invalid}) do
+    {:error, {:invalid, nil, nil}}
+  end
+
+  # Support Poison 2.2
+  defp do_convert({:error, {:invalid, symbol}}) do
+    {:error, {:invalid, symbol, nil}}
+  end
+
   @doc """
   Converts the given json file into a xml string. 
 

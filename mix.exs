@@ -42,7 +42,7 @@ defmodule JsonToXml.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:poison, "~> 3.0"},
+    [{:poison, "~> 2.2 or ~> 3.0"},
      {:ex_doc, "~> 0.14", only: :dev, runtime: false}, 
      {:xml_builder, "~>0.1.1"}
     ]
